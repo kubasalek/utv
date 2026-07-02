@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import type { MenuItem } from "../data/menu";
+import type { MenuItem } from "@/features/ui/sidebar/menu";
 
 interface SidebarItemProps {
   item: MenuItem;

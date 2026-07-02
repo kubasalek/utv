@@ -83,13 +83,13 @@ export async function requireAuth(allowedRoles?: string[]) {
 		throw new Error('Twoje konto jest nieaktywne lub zostało usunięte.');
 	}
 
-	let userRoles = await sql`
+	const userRolesDB = await sql`
 		SELECT roles.name FROM roles
 		JOIN user_roles ON user_roles.role_id = roles.id
 		JOIN users ON users.uuid = user_roles.user_uuid
 		WHERE users.uuid = ${session.uuid}
 	`;
-	userRoles = userRoles.map(row => row.name);
+	const userRoles = userRolesDB.map(row => row.name);
 	
 
 	let user = users[0];
