@@ -5,7 +5,7 @@ interface cardProps {
     children: React.ReactNode
 }
 
-export default function Card({title, subtitle, width, children}) {
+export default function Card({title, subtitle, width, children} : cardProps) {
     return (
         <div className={`col-${width}`}>
             <div className="card">
