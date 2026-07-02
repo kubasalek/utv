@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { createSession } from '@/lib/session';
 import { sql } from '@/lib/db';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export async function loginWithDirectDB(formData: FormData) {
   const login = formData.get('login') as string;
