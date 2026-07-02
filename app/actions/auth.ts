@@ -18,9 +18,9 @@ export async function loginWithDirectDB(formData: FormData) {
     // Funkcja sql z @neondatabase/serverless automatycznie chroni przed SQL Injection
     // Zakładam, że Twoja tabela nazywa się 'users', a kolumny to 'login' i 'password_hash'
     const users = await sql`
-      SELECT uuid, email, password_hash 
+      SELECT uuid, password_hash 
       FROM users 
-      WHERE email = ${login}
+      WHERE login = ${login}
       LIMIT 1
     `;
 
