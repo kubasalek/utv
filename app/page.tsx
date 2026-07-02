@@ -19,12 +19,12 @@ export default function Home() {
 			<Header />
 			<PageWrapper>
 				<Row>
-					<Card title="Moje materiały" subtitle="def" width="8">
+					<Card title="Moje materiały" subtitle="def" width={8}>
 						<RoleButton />
 					</ Card>
 				</Row>
 				<Row>
-					<Card title="Moje materiały" subtitle="def" width="4">
+					<Card title="Moje materiały" subtitle="def" width={4}>
 						TEST
 					</ Card>
 				</Row>
