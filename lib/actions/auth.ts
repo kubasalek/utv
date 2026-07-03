@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { SignJWT, jwtVerify } from 'jose';
 
 import { redirect } from 'next/navigation';
-import { createSession } from '@/lib/session';
+import { createSession, deleteSession } from '@/lib/session';
 import { sql } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 
@@ -54,9 +54,14 @@ export async function loginWithDirectDB(formData: FormData) {
   // 4. Przekierowanie
   // UWAGA: W Next.js funkcja redirect() rzuca wyjątek (NEXT_REDIRECT), 
   // dlatego MUSI znajdować się poza blokiem try-catch.
-  redirect('/');
+  redirect('/dashboard');
 }
 
-export async function getUserFullName() {
-  return "Jan Kowalski";
+export async function logout() {
+  // Usuwamy ciasteczko autoryzacyjne
+  await deleteSession();
+  
+  // Przekierowujemy na stronę logowania.
+  // Pamiętaj: redirect() w Server Actions działa bezbłędnie i odświeża stan aplikacji.
+  redirect('/auth/login?action=logout');
 }

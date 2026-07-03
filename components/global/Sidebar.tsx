@@ -14,7 +14,7 @@ export default function Sidebar({ toggleSidebar } : sidebarProps) {
     <aside className="left-sidebar">
       <div>
         <div className="brand-logo d-flex align-items-center justify-content-between">
-          <Link href="/" className="text-nowrap logo-img">
+          <Link href="/dashboard" className="text-nowrap logo-img">
             {/* Zaktualizowana ścieżka - zakłada, że logo jest w public/images/ */}
             <Image 
               src="/images/utv-logo.png" 

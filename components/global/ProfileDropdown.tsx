@@ -1,7 +1,9 @@
 'use client';
 import Image from "next/image";
+import Link from "next/link";
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
+import { logout } from '@/lib/actions/auth';
 
 interface props {
     fullName: string;
@@ -10,6 +12,14 @@ interface props {
 
 export default function ProfileDropdown({ fullName } : props) {
     const [isDropdownVisible, setDropdownVisibility] = useState(false);
+
+    const [isPending, startTransition] = useTransition();
+
+    const handleLogout = () => {
+        startTransition(() => {
+            logout();
+        });
+    };
     
     return (
             <div className="navbar-collapse justify-content-end px-0" id="navbarNav">
@@ -34,19 +44,20 @@ export default function ProfileDropdown({ fullName } : props) {
                         aria-labelledby="drop2"
                     >
                         <div className="message-body">
-                            <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
-                            <i className="ti ti-user fs-6"></i>
-                            <p className="mb-0 fs-3">My Profile</p>
+                            <Link href="/dashboard/profile" className="d-flex align-items-center gap-2 dropdown-item">
+                                <i className="ti ti-user fs-6"></i>
+                                <p className="mb-0 fs-3">Mój profil</p>
+                            </ Link>
+
+                            <a href="" className="d-none align-items-center gap-2 dropdown-item">
+                                <i className="ti ti-mail fs-6"></i>
+                                <p className="mb-0 fs-3">My Account</p>
                             </a>
-                            <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
-                            <i className="ti ti-mail fs-6"></i>
-                            <p className="mb-0 fs-3">My Account</p>
+                            <a href="" className="d-none align-items-center gap-2 dropdown-item">
+                                <i className="ti ti-list-check fs-6"></i>
+                                <p className="mb-0 fs-3">My Task</p>
                             </a>
-                            <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
-                            <i className="ti ti-list-check fs-6"></i>
-                            <p className="mb-0 fs-3">My Task</p>
-                            </a>
-                            <a href="./authentication-login.html" className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                            <a onClick={handleLogout} className="btn btn-outline-primary mx-3 mt-2 d-block">Wyloguj się</a>
                         </div>
                     </div>
                 </li>

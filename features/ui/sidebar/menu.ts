@@ -26,21 +26,8 @@ export const sidebarMenuConfig: MenuItem[] = [
     type: 'link',
     title: 'Kokpit',
     icon: 'ti ti-layout-board-split',
-    path: '/' 
+    path: '/dashboard' 
   },
-  {
-    id: 'label-settings',
-    type: 'label',
-    title: 'Ustawienia',
-    icon: 'solar:menu-dots-linear'
-  },
-  {
-    id: 'link-profil',
-    type: 'link',
-    title: 'Profil',
-    icon: 'ti ti-user',
-    path: '/profile'
-  }
   /*{
     id: 'link-kolaudacja',
     type: 'link',

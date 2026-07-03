@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { decrypt } from '@/lib/session';
 
 // Określ, które ścieżki są chronione, a które publiczne
-const protectedRoutes = ['/'];
+const protectedRoutes = ['/dashboard'];
 const publicRoutes = ['/auth/login'];
 
 export async function middleware(req: NextRequest) {
@@ -24,7 +24,7 @@ export async function middleware(req: NextRequest) {
 
   // Przekierowanie zalogowanego użytkownika ze strony logowania
   if (isPublicRoute && session && path === '/auth/login') {
-    return NextResponse.redirect(new URL('/', req.nextUrl));
+    return NextResponse.redirect(new URL('/dashboard', req.nextUrl));
   }
 
   // Odświeżenie sesji (Sliding Expiration) - opcjonalne, ale świetne dla PWA
