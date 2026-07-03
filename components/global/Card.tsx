@@ -1,3 +1,5 @@
+'use client';
+
 interface cardProps {
     title: string,
     subtitle: string,

@@ -12,7 +12,7 @@ import Sidebar from '@/components/global/Sidebar';
 import Header from '@/components/global/Header';
 
 import { useState, useTransition } from 'react';
-import { loginWithDirectDB } from '@/app/actions/auth';
+import { loginWithDirectDB } from '@/lib/actions/auth';
 
 import { Icon } from '@iconify/react';
 

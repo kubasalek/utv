@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { checkRoleAction } from '@/app/actions/permissions';
+import { checkRoleAction } from '@/lib/actions/permissions';
 
 export default function RoleButton() {
   const [loading, setLoading] = useState(false);

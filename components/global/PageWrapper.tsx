@@ -1,5 +1,7 @@
+'use client';
+
 interface pageWrapper {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
 export default function PageWrapper({ children }: { children: React.ReactNode }) {

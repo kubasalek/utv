@@ -9,6 +9,8 @@ const encodedKey = new TextEncoder().encode(secretKey);
 
 type SessionPayload = {
   	uuid: string;
+	first_name: string;
+	last_name: string;
 };
 
 const sessionOptions = {
@@ -35,9 +37,9 @@ export async function decrypt(session: string | undefined = '') {
   }
 }
 
-export async function createSession(uuid: string) {
+export async function createSession(payload : SessionPayload) {
   const expiresAt = new Date(Date.now() + sessionOptions.duration);
-  const session = await encrypt({ uuid });
+  const session = await encrypt(payload);
 
   // Dodajemy 'await' przed wywołaniem cookies()
   const cookieStore = await cookies();
@@ -111,4 +113,12 @@ export async function requireAuth(allowedRoles?: string[]) {
 		uuid: user.uuid,
 		roles: userRoles,
 	};
+}
+
+export async function getUserFullName() {
+    const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get('session')?.value;
+    const session = await decrypt(sessionCookie);
+
+    return `${session.first_name} ${session.last_name}`;
 }

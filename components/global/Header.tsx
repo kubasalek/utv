@@ -1,44 +1,24 @@
-import Image from "next/image";
+'use client';
 
-export default function Header() {
+import ProfileDropdown from '@/components/global/ProfileDropdown';
+
+interface headerProps {
+    toggleSidebar: () => void;
+    fullName: string;
+}
+
+export default function Header({ toggleSidebar, fullName } : headerProps) {
     return (
         <header className="app-header">
             <nav className="navbar navbar-expand-lg navbar-light">
             <ul className="navbar-nav">
                 <li className="nav-item d-block d-xl-none">
-                <a className="nav-link sidebartoggler " id="headerCollapse" href="javascript:void(0)">
+                <a className="nav-link sidebartoggler " id="headerCollapse" onClick={toggleSidebar}>
                     <i className="ti ti-menu-2"></i>
                 </a>
                 </li>
             </ul>
-            <div className="navbar-collapse justify-content-end px-0" id="navbarNav">
-                <ul className="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                Kuba Sałek
-                <li className="nav-item dropdown">
-                    <a className="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                        <Image src="/images/utv.png" className="rounded-circle" width="35" height="35" alt="Profile picture" />
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                    <div className="message-body">
-                        <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
-                        <i className="ti ti-user fs-6"></i>
-                        <p className="mb-0 fs-3">My Profile</p>
-                        </a>
-                        <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
-                        <i className="ti ti-mail fs-6"></i>
-                        <p className="mb-0 fs-3">My Account</p>
-                        </a>
-                        <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
-                        <i className="ti ti-list-check fs-6"></i>
-                        <p className="mb-0 fs-3">My Task</p>
-                        </a>
-                        <a href="./authentication-login.html" className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                    </div>
-                    </div>
-                </li>
-                </ul>
-            </div>
+            <ProfileDropdown fullName={fullName} />
             </nav>
         </header>
     )

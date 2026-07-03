@@ -1,3 +1,5 @@
+'use client';
+
 interface rowProps {
     children: React.ReactNode
 }

@@ -15,7 +15,6 @@ export interface MenuItem {
 }
 
 export const sidebarMenuConfig: MenuItem[] = [
-  // --- SEKCJA: UNIWEREK.TV ---
   {
     id: 'label-utv',
     type: 'label',
@@ -30,6 +29,19 @@ export const sidebarMenuConfig: MenuItem[] = [
     path: '/' 
   },
   {
+    id: 'label-settings',
+    type: 'label',
+    title: 'Ustawienia',
+    icon: 'solar:menu-dots-linear'
+  },
+  {
+    id: 'link-profil',
+    type: 'link',
+    title: 'Profil',
+    icon: 'ti ti-user',
+    path: '/profile'
+  }
+  /*{
     id: 'link-kolaudacja',
     type: 'link',
     title: 'Kolaudacja',
@@ -52,7 +64,7 @@ export const sidebarMenuConfig: MenuItem[] = [
       { title: 'Kalendarz', path: '/hardware/calendar' },
       { title: 'Lista', path: '/hardware/list' }
     ]
-  },
+  },*/
   /*{
     id: 'label-inne',
     type: 'label',
@@ -73,5 +85,5 @@ export const sidebarMenuConfig: MenuItem[] = [
   { id: 'link-kontakt', type: 'link', title: 'Kontakt', icon: 'ti ti-mail', path: '/kontakt' },
   { id: 'link-harmonogram', type: 'link', title: 'Harmonogram', icon: 'ti ti-calendar', path: '/harmonogram' },
   { id: 'link-notatki', type: 'link', title: 'Notatki', icon: 'ti ti-notes', path: '/notatki' }
-   */
+  */
 ];

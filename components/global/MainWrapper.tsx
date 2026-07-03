@@ -1,3 +1,5 @@
+'use client';
+
 interface mainWrapperProps {
     children: React.ReactNode
 }

@@ -1,5 +1,7 @@
 'use server';
 import { cookies } from 'next/headers';
+import { SignJWT, jwtVerify } from 'jose';
+
 import { redirect } from 'next/navigation';
 import { createSession } from '@/lib/session';
 import { sql } from '@/lib/db';
@@ -18,7 +20,7 @@ export async function loginWithDirectDB(formData: FormData) {
     // Funkcja sql z @neondatabase/serverless automatycznie chroni przed SQL Injection
     // Zakładam, że Twoja tabela nazywa się 'users', a kolumny to 'login' i 'password_hash'
     const users = await sql`
-      SELECT uuid, password_hash 
+      SELECT uuid, password_hash, first_name, last_name 
       FROM users 
       WHERE login = ${login}
       LIMIT 1
@@ -38,7 +40,11 @@ export async function loginWithDirectDB(formData: FormData) {
       return { success: false, error: 'Niepoprawny login lub hasło.' };
     }
 
-    await createSession(user.uuid);
+    await createSession({
+      uuid: user.uuid,
+      first_name: user.first_name,
+      last_name: user.last_name
+    });
 
   } catch (error) {
     console.error('Błąd podczas logowania do bazy:', error);
@@ -49,4 +55,8 @@ export async function loginWithDirectDB(formData: FormData) {
   // UWAGA: W Next.js funkcja redirect() rzuca wyjątek (NEXT_REDIRECT), 
   // dlatego MUSI znajdować się poza blokiem try-catch.
   redirect('/');
+}
+
+export async function getUserFullName() {
+  return "Jan Kowalski";
 }
