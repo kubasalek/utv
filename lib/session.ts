@@ -120,5 +120,9 @@ export async function getUserFullName() {
     const sessionCookie = cookieStore.get('session')?.value;
     const session = await decrypt(sessionCookie);
 
+	if (session == null) {
+		return "Niezalogowany";
+	}
+
     return `${session.first_name} ${session.last_name}`;
 }

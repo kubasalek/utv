@@ -41,7 +41,7 @@ export default function LoginPage() {
 	};
 
   	return (
-		<BodyWrapper>
+		//<BodyWrapper>
 			<CenteredPageWrapper>
 				<div className="d-flex align-items-center justify-content-center w-100">
 						<div className="row justify-content-center w-100">
@@ -80,6 +80,6 @@ export default function LoginPage() {
 						</div>
 				</div>
 			</CenteredPageWrapper>
-		</ BodyWrapper>
+		//</ BodyWrapper>
   	);
 }
