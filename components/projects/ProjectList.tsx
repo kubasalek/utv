@@ -17,15 +17,23 @@ export default async function ProjectList() {
     }
 
     const materialList = await sql`
-        SELECT
-            projects.title,
+        SELECT 
             projects.project_id,
+            projects.title, 
             projects.thumbnail_url,
-            ARRAY_AGG(project_assignments.as_role) AS as_roles
+            ARRAY_AGG(project_assignments.as_role) AS as_roles,
+            -- Podzapytanie wyciągające najnowszy status dla danego projektu
+            (
+                SELECT status_name 
+                FROM project_statuses 
+                WHERE project_statuses.project_id = projects.project_id 
+                ORDER BY created_at DESC 
+                LIMIT 1
+            ) AS current_status
         FROM projects
         JOIN project_assignments ON projects.project_id = project_assignments.project_id
         WHERE project_assignments.user_uuid = ${session.uuid}
-        GROUP BY projects.project_id
+        GROUP BY projects.project_id, projects.title
     `;
     
     return (
@@ -33,6 +41,7 @@ export default async function ProjectList() {
             <thead>
                 <tr>
                     <th>Nazwa materiału</th>
+                    <th>Status</th>
                     <th>Rola</th>
                     <th>Akcje</th>
                 </tr>
@@ -53,13 +62,16 @@ export default async function ProjectList() {
                             </div>
                         </td>
                         <td>
+                            {material.current_status}
+                        </td>
+                        <td>
                             {material.as_roles.map((role: string) => (
                                 <Badge key={`${material.project_id}-${role}`} text={role} color="primary" />
                             ))}
                         </td>
                         <td>
                             <Link href={`/dashboard/project/${material.project_id}`}>
-                                <div className="btn btn-primary">
+                                <div className="btn btn-sm btn-primary">
                                     Edytuj
                                 </div>
                             </ Link>
