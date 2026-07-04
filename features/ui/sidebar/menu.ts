@@ -28,6 +28,13 @@ export const sidebarMenuConfig: MenuItem[] = [
     icon: 'ti ti-layout-board-split',
     path: '/dashboard' 
   },
+  {
+    id: 'link-moje-materialy',
+    type: 'link',
+    title: 'Moje materiały',
+    icon: 'ti ti-video',
+    path: '/dashboard/projects'
+  },
   /*{
     id: 'link-kolaudacja',
     type: 'link',

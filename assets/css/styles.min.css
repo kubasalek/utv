@@ -42,6 +42,17 @@
   --bs-dark: #11142d;
   --bs-muted: #777e89;
   --bs-indigo: #6610f2;
+
+  /* KOLORY DZIAŁÓW UTV*/
+  --bs-produ: #005610;
+  --bs-repo: #0090f2;
+  --bs-reda: #ce3500;
+  --bs-promo: #64007c;
+  --bs-monte: #3300af;
+  --bs-ope: #28211b;
+  --bs-foto: #009696;
+  --bs-grafika: #002e66;
+
   --bs-light-indigo: #ebf3fe;
   --bs-primary-rgb: 30, 77, 183;
   --bs-secondary-rgb: 26, 151, 245;
@@ -9960,6 +9971,38 @@ textarea.form-control-lg {
 .bg-white {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-produ {
+  background-color: var(--bs-produ) !important;
+}
+
+.bg-repo {
+  background-color: var(--bs-repo) !important;
+}
+
+.bg-reda {
+  background-color: var(--bs-reda) !important;
+}
+
+.bg-promo {
+  background-color: var(--bs-promo) !important;
+}
+
+.bg-monte {
+  background-color: var(--bs-monte) !important;
+}
+
+.bg-ope {
+  background-color: var(--bs-ope) !important;
+}
+
+.bg-foto {
+  background-color: var(--bs-foto) !important;
+}
+
+.bg-grafika {
+  background-color: var(--bs-grafika) !important;
 }
 
 .bg-body {

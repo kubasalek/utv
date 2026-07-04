@@ -5,6 +5,7 @@ import { getSession } from '@/lib/session';
 import Link from 'next/link';
 import Image from 'next/image';
 import Badge from '@/components/global/Badge';
+import { getRoleColor } from '@/lib/roles';
 
 import Table from '@/components/tables/Table';
 
@@ -66,11 +67,11 @@ export default async function ProjectList() {
                         </td>
                         <td>
                             {material.as_roles.map((role: string) => (
-                                <Badge key={`${material.project_id}-${role}`} text={role} color="primary" />
+                                <Badge key={`${material.project_id}-${role}`} text={role} color={getRoleColor(role)} />
                             ))}
                         </td>
                         <td>
-                            <Link href={`/dashboard/project/${material.project_id}`}>
+                            <Link href={`/dashboard/projects/${material.project_id}`}>
                                 <div className="btn btn-sm btn-primary">
                                     Edytuj
                                 </div>
