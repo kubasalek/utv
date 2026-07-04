@@ -9,11 +9,14 @@ import Badge from '@/components/global/Badge';
 
 import ProjectList from '@/components/projects/ProjectList';
 
+import { getMaterialList } from '@/lib/actions/getMaterialList';
+
 import { Icon } from '@iconify/react';
 
-export default function Home() {
+export default async function Home() {
 
 	//<RoleButton />
+	const materialList = await getMaterialList();
 
 	return (
 		<Row>
@@ -22,7 +25,7 @@ export default function Home() {
 				subtitle="Lista wszystkich Twoich materiałów w produkcji"
 				width={12}
 			>
-				<ProjectList />
+				<ProjectList materialList={materialList} />
 				
 			</ Card>
 		</Row>

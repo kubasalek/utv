@@ -13,7 +13,7 @@ export default function Card({title, subtitle, width, children} : cardProps) {
             <div className="card">
                 <div className="card-body">
                     <div className="d-md-flex align-items-center">
-                        <div>
+                        <div className="mb-3">
                             <h4 className="card-title">{title}</h4>
                             <p className="card-subtitle">
                                 {subtitle}
