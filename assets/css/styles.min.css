@@ -16062,3 +16062,8 @@ ul {
 }
 
 /*# sourceMappingURL=styles.min.css.map */
+
+.project-thumbnail {
+  height: 75px;
+  border-radius: var(--bs-border-radius);
+}

@@ -127,3 +127,13 @@ export async function getUserFullName() {
 
     return `${session.first_name} ${session.last_name}`;
 }
+
+export async function getSession() {
+	const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get('session')?.value;
+    const session = await decrypt(sessionCookie);
+
+	if (session == null) return null;
+
+	return session;
+}

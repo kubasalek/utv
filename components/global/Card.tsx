@@ -1,10 +1,10 @@
 'use client';
 
 interface cardProps {
-    title: string,
-    subtitle: string,
-    width: number,
-    children: React.ReactNode
+    title: string;
+    subtitle: string;
+    width: number;
+    children?: React.ReactNode;
 }
 
 export default function Card({title, subtitle, width, children} : cardProps) {

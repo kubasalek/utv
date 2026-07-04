@@ -7,6 +7,6 @@ interface props {
 
 export default function Badge({ text, color } : props) {
     return (
-        <span className={"badge bg-" + color}>{text}</span>
+        <span className={"badge me-1 bg-" + color}>{text}</span>
     )
 }
