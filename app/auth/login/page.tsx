@@ -21,6 +21,8 @@ function LoginForm() {
     const action = searchParams.get('action');
     const isLoggedOut = action === 'logout';
 
+    const redirect_url = searchParams.get('redirect');
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setError(null); 
@@ -28,7 +30,7 @@ function LoginForm() {
         const formData = new FormData(event.currentTarget);
 
         startTransition(async () => {
-            const result = await loginWithDirectDB(formData);
+            const result = await loginWithDirectDB(formData, redirect_url || "");
 
             if (!result.success) {
                 setError(result.error || 'Coś poszło nie tak.');

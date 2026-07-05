@@ -19,7 +19,7 @@ export async function middleware(req: NextRequest) {
 
   // Przekierowania ze względu na brak uprawnień
   if (isProtectedRoute && !session) {
-    return NextResponse.redirect(new URL('/auth/login', req.nextUrl));
+    return NextResponse.redirect(new URL('/auth/login?redirect='+path, req.nextUrl));
   }
 
   // Przekierowanie zalogowanego użytkownika ze strony logowania

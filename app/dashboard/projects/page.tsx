@@ -8,7 +8,7 @@ import AdvancedProjectList from '@/components/projects/AdvancedProjectList';
 
 import { sql } from '@/lib/db';
 import { getSession } from '@/lib/session';
-import { getMaterialList } from '@/lib/actions/getMaterialList';
+import { getMaterialList } from '@/lib/actions/materials';
 
 
 import { Icon } from '@iconify/react';

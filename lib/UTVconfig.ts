@@ -13,7 +13,9 @@ const statuses = {
     "NEW": ["Nowy materiał", "primary"],
     "PRODUCTION": ["Realizacja materiału", "success"],
     "POSTPRODUCTION": ["W trakcie montażu", "warning"],
+    "FOR_REVIEW": ["Oczekuje na kolaudację", "warning"],
     "REVIEW": ["W kolaudacji", "warning"],
+    "REVIEW_FIX": ["Kolaudacja: poprawki", "danger"],
     "REVIEW_PASSED": ["Po kolaudacji", "success"],
     "PUBLISHED": ["Opublikowany", "dark"]
 } as const;

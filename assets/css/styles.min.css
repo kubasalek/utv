@@ -5165,6 +5165,24 @@ textarea.form-control-lg {
   display: none;
 }
 
+.badge-sm {
+    --bs-badge-padding-x: 5px;
+    --bs-badge-padding-y: 1px;
+    --bs-badge-font-size: .6rem;
+    --bs-badge-font-weight: 400;
+    --bs-badge-color: #fff;
+    --bs-badge-border-radius: 4px;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    font-size: var(--bs-badge-font-size);
+    font-weight: var(--bs-badge-font-weight);
+    color: var(--bs-badge-color);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: text-top;
+    border-radius: var(--bs-badge-border-radius);
+    display: inline-block;
+}
+
 .btn .badge {
   position: relative;
   top: -1px;
@@ -15850,6 +15868,10 @@ textarea.form-control-lg {
   transform: rotate(-135deg) translate(0, -50%);
 }
 
+ul.withgap > li:not(:last-child) {
+    padding-bottom: 10px;
+}
+
 .app-topstrip {
   position: fixed;
   top: 0;
@@ -16109,4 +16131,14 @@ ul {
 .project-thumbnail {
   height: 75px;
   border-radius: var(--bs-border-radius);
+}
+
+.user-profile-pic {
+  border-radius: 50%;
+  width: 45px;
+  aspect-ratio: 1/1;
+}
+
+.user-profile-pic.big {
+  width: 75px;
 }

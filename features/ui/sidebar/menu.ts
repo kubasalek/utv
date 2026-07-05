@@ -16,9 +16,9 @@ export interface MenuItem {
 
 export const sidebarMenuConfig: MenuItem[] = [
   {
-    id: 'label-utv',
+    id: 'label-materialy',
     type: 'label',
-    title: 'Uniwerek.TV',
+    title: 'Materiały',
     icon: 'solar:menu-dots-linear'
   },
   {
@@ -34,6 +34,33 @@ export const sidebarMenuConfig: MenuItem[] = [
     title: 'Moje materiały',
     icon: 'ti ti-video',
     path: '/dashboard/projects'
+  },
+  {
+    id: 'link-gielda',
+    type: 'link',
+    title: 'Tablica materiałów',
+    icon: 'ti ti-news',
+    path: '/dashboard/board'
+  },
+  {
+    id: 'label-utv',
+    type: 'label',
+    title: 'Uniwerek.TV',
+    icon: 'solar:menu-dots-linear'
+  },
+  {
+    id: 'link-zespol',
+    type: 'link',
+    title: 'Zespół UTV',
+    icon: 'ti ti-users',
+    path: '/dashboard/team' 
+  },
+  {
+    id: 'link-profil',
+    type: 'link',
+    title: 'Profil',
+    icon: 'ti ti-user-circle',
+    path: '/dashboard/profile' 
   },
   /*{
     id: 'link-kolaudacja',

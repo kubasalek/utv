@@ -4,10 +4,11 @@ import ProfileDropdown from '@/components/global/ProfileDropdown';
 
 interface headerProps {
     toggleSidebar: () => void;
-    fullName: string;
+    full_name: string;
+    avatar_url: string;
 }
 
-export default function Header({ toggleSidebar, fullName } : headerProps) {
+export default function Header({ toggleSidebar, full_name, avatar_url } : headerProps) {
     return (
         <header className="app-header">
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -18,7 +19,7 @@ export default function Header({ toggleSidebar, fullName } : headerProps) {
                 </a>
                 </li>
             </ul>
-            <ProfileDropdown fullName={fullName} />
+            <ProfileDropdown full_name={full_name} avatar_url={avatar_url} />
             </nav>
         </header>
     )

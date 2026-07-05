@@ -30,7 +30,9 @@ export default function SidebarItem({ item }: SidebarItemProps) {
 
   // 2. Renderowanie zwykłego Linku
   if (item.type === 'link') {
-    const isActive = pathname === item.path;
+    let isActive = pathname === item.path;
+    if (pathname.startsWith("/dashboard/projects/") && item.path == "/dashboard/projects") isActive = true;
+    if (pathname.startsWith("/dashboard/board/") && item.path == "/dashboard/board") isActive = true;
     return (
       <li className="sidebar-item">
         <Link 

@@ -12,6 +12,7 @@ type SessionPayload = {
   	uuid: string;
 	first_name: string;
 	last_name: string;
+	avatar_url: string;
 };
 
 const sessionOptions = {
@@ -97,7 +98,7 @@ export async function requireAuth(allowedRoles?: string[]) {
 
 	let user = users[0];
 	user.roles = userRoles;
-	console.log(user);
+	//console.log(user);
 
 	// 3. Weryfikacja uprawnień (jeśli podano wymagane role)
 	if (allowedRoles && allowedRoles.length > 0) {
@@ -116,16 +117,21 @@ export async function requireAuth(allowedRoles?: string[]) {
 	};
 }
 
-export async function getUserFullName() {
+export async function getUserData() {
     const cookieStore = await cookies();
     const sessionCookie = cookieStore.get('session')?.value;
     const session = await decrypt(sessionCookie);
 
 	if (session == null) {
-		return "Niezalogowany";
+		return undefined;
 	}
-
-    return `${session.first_name} ${session.last_name}`;
+	
+	return {
+		first_name: session.first_name,
+		last_name: session.last_name,
+		full_name: `${session.first_name} ${session.last_name}`,
+		avatar_url: session.avatar_url
+	}
 }
 
 export async function getSession() {

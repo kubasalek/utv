@@ -4,20 +4,25 @@ interface InputProps {
     label?: string;
     type: string;
     placeholder?: string;
-    value: string;
-    onChange: (value: string) => void;
+    value?: string;
+    onChange?: (value: string) => void;
+    noMargin?: boolean;
+    min?: string;
+    max?: string;
 }
 
-export function Input({label, type, placeholder, value, onChange} : InputProps) {
+export function Input({label, type, placeholder, value, onChange, noMargin, min, max} : InputProps) {
     return (
-        <div className="mb-3">
-            <label className="form-label">{label}</label>
+        <div className={noMargin ? "" : "mb-3"}>
+            {label && <label className="form-label">{label}</label>}
             <input
                 type={type}
                 className="form-control"
                 placeholder={placeholder}
                 value={value}
-                onInput={(e) => onChange((e.target as HTMLInputElement).value)}
+                onChange={(e) => onChange?.((e.target as HTMLInputElement).value)}
+                min={(type == "number" && min) ? min : undefined}
+                max={(type == "number" && max) ? max : undefined}
             />
         </div>
     )
@@ -33,7 +38,7 @@ interface SelectProps {
 export function Select({ label, options, value, onChange } : SelectProps) {
     return (
         <div className="mb-3">
-            <label className="form-label">{label}</label>
+            {label && <label className="form-label">{label}</label>}
             <select 
                 className="form-select" 
                 value={value} 

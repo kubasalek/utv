@@ -6,11 +6,12 @@ import { useState, useTransition } from 'react';
 import { logout } from '@/lib/actions/auth';
 
 interface props {
-    fullName: string;
+    full_name: string;
+    avatar_url: string;
 }
 
 
-export default function ProfileDropdown({ fullName } : props) {
+export default function ProfileDropdown({ full_name, avatar_url } : props) {
     const [isDropdownVisible, setDropdownVisibility] = useState(false);
 
     const [isPending, startTransition] = useTransition();
@@ -27,7 +28,7 @@ export default function ProfileDropdown({ fullName } : props) {
                     className="navbar-nav flex-row ms-auto align-items-center justify-content-end cursor-pointer"
                     onClick={() => setDropdownVisibility(!isDropdownVisible)}
                 >
-                {fullName}
+                {full_name}
                 <li className="nav-item dropdown">
                     <a
                         className={isDropdownVisible ? "nav-link show" : "nav-link"}
@@ -35,7 +36,7 @@ export default function ProfileDropdown({ fullName } : props) {
                         data-bs-toggle="dropdown"
                         aria-expanded={isDropdownVisible ? "true" : "false"}
                     >
-                        <Image src="/images/utv.png" className="rounded-circle" width="35" height="35" alt="Profile picture" />
+                        <img src={avatar_url || "/images/utv.png"} className="rounded-circle" width="35" height="35" alt="Profile picture" />
                     </a>
 
                     <div

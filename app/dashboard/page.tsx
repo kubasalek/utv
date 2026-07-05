@@ -4,18 +4,15 @@ import Card from '@/components/global/Card';
 import Row from '@/components/global/Row';
 import Sidebar from '@/components/global/Sidebar';
 import Header from '@/components/global/Header';
-import RoleButton from '@/components/global/RoleButton';
 import Badge from '@/components/global/Badge';
 
 import ProjectList from '@/components/projects/ProjectList';
 
-import { getMaterialList } from '@/lib/actions/getMaterialList';
+import { getMaterialList } from '@/lib/actions/materials';
 
 import { Icon } from '@iconify/react';
 
 export default async function Home() {
-
-	//<RoleButton />
 	const materialList = await getMaterialList();
 
 	return (

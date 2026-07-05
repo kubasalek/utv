@@ -8,17 +8,18 @@ import PageWrapper from '@/components/global/PageWrapper';
 
 interface dashboardLayoutProps {
     children: React.ReactNode;
-    fullName: string;
+    full_name: string;
+	avatar_url: string;
 }
 
-export default function DashboardLayout({ children, fullName }: dashboardLayoutProps) {
+export default function DashboardLayout({ children, full_name, avatar_url }: dashboardLayoutProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
         <BodyWrapper isSidebarOpen={isSidebarOpen}>
 			<Sidebar toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
 			<MainWrapper>
-				<Header toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} fullName={fullName} />
+				<Header toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} full_name={full_name} avatar_url={avatar_url} />
 				<PageWrapper>
 					{children}
 				</ PageWrapper>

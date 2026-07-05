@@ -1,8 +1,8 @@
 'use client';
 
 interface cardProps {
-    title: string;
-    subtitle: string;
+    title?: string;
+    subtitle?: string;
     width: number;
     children?: React.ReactNode;
 }

@@ -25,7 +25,7 @@ export default function ClientProjectList({ materialList } : props) {
                         <th>Nazwa materiału</th>
                         <th>Status</th>
                         <th>Rola</th>
-                        <th>Akcje</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +39,7 @@ export default function ClientProjectList({ materialList } : props) {
                                     />
                                     <div className="ms-3">
                                         <h6 className="mb-0 fw-bolder">{material.title}</h6>
-                                        <span className="text-muted">Dodatkowe informacje</span>
+                                        <span className="text-muted">Uniwerek.TV</span>
                                     </div>
                                 </div>
                             </td>
@@ -56,7 +56,7 @@ export default function ClientProjectList({ materialList } : props) {
                             <td>
                                 <Link href={`/dashboard/projects/${material.project_id}`}>
                                     <div className="btn btn-sm btn-primary">
-                                        Edytuj
+                                        Wyświetl
                                     </div>
                                 </ Link>
                             </td>

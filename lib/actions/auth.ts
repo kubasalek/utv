@@ -7,7 +7,7 @@ import { createSession, deleteSession } from '@/lib/session';
 import { sql } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 
-export async function loginWithDirectDB(formData: FormData) {
+export async function loginWithDirectDB(formData: FormData, redirect_url: string) {
   const login = formData.get('login') as string;
   const password = formData.get('password') as string;
 
@@ -20,7 +20,7 @@ export async function loginWithDirectDB(formData: FormData) {
     // Funkcja sql z @neondatabase/serverless automatycznie chroni przed SQL Injection
     // Zakładam, że Twoja tabela nazywa się 'users', a kolumny to 'login' i 'password_hash'
     const users = await sql`
-      SELECT uuid, password_hash, first_name, last_name 
+      SELECT uuid, password_hash, first_name, last_name, avatar_url
       FROM users 
       WHERE login = ${login}
       LIMIT 1
@@ -43,7 +43,8 @@ export async function loginWithDirectDB(formData: FormData) {
     await createSession({
       uuid: user.uuid,
       first_name: user.first_name,
-      last_name: user.last_name
+      last_name: user.last_name,
+      avatar_url: user.avatar_url
     });
 
   } catch (error) {
@@ -54,7 +55,7 @@ export async function loginWithDirectDB(formData: FormData) {
   // 4. Przekierowanie
   // UWAGA: W Next.js funkcja redirect() rzuca wyjątek (NEXT_REDIRECT), 
   // dlatego MUSI znajdować się poza blokiem try-catch.
-  redirect('/dashboard');
+  redirect(redirect_url || '/dashboard');
 }
 
 export async function logout() {

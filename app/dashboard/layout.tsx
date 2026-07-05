@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 
 import DashboardLayout from '@/components/global/DashboardLayout';
-import { getUserFullName } from '@/lib/session';
+import { getUserData } from '@/lib/session';
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -21,8 +21,16 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: Readonly<{children: React.ReactNode;}>) {
+	const userData = await getUserData();
+	if (userData == undefined) {
+		return (
+			<>
+			</>
+		);
+	}
+
 	return (
-				<DashboardLayout fullName={await getUserFullName()}>
+				<DashboardLayout full_name={userData.full_name} avatar_url={userData.avatar_url}>
 					{children}
 				</ DashboardLayout>
 	);

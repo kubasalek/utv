@@ -1,13 +1,15 @@
 'use client';
 
 type props = {
-    children: React.ReactNode,
-    width: number,
-    sm?: number,
-    md?: number,
-    lg?: number,
-    xl?: number,
-    xxl?: number
+    children: React.ReactNode;
+    width: number;
+    sm?: number;
+    md?: number;
+    lg?: number;
+    xl?: number;
+    xxl?: number;
+    centered?: boolean;
+    withgap?: boolean;
 }
 
 export default function Col(props : props) {
@@ -18,8 +20,12 @@ export default function Col(props : props) {
         if (widths[width] == undefined) continue;
         classes += " "+widthsPrefix[width]+widths[width];
     }
+
+    const centered = props.centered ? " d-flex justify-content-center" : "";
+    const withgap = props.withgap ? {gap: "5px"} : {}
+
     return (
-        <div className={"col-3" + classes}>
+        <div className={classes + centered} style={withgap}>
             {props.children}
         </div>
     )
