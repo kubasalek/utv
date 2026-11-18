@@ -7,8 +7,8 @@ import { useState, useTransition } from 'react';
 import { updatePersonalData } from '@/lib/actions/profileActions';
 
 interface props {
-    email: string;
-    phone: string;
+    initialEmail: string;
+    initialPhone: string;
 }
 
 export default function Form({ initialEmail, initialPhone} : props) {

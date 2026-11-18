@@ -8,8 +8,8 @@ import { updateICE } from '@/lib/actions/profileActions';
 import { Input } from '@/components/form/FormControls';
 
 interface props {
-    phone: string;
-    label: string;
+    initialPhone: string;
+    initialLabel: string;
 }
 
 export default function Form({ initialPhone, initialLabel} : props) {

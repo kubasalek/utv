@@ -23,7 +23,7 @@ const statuses = {
 type RoleKey = keyof typeof roles;
 type StatusKey = keyof typeof statuses;
 
-export function getRoleColor(role: string): string {
+export function getRoleColor(role: string) {
     return role in roles ? roles[role as RoleKey].color : "primary";
 }
 

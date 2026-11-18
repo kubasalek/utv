@@ -55,7 +55,7 @@ export default async function PeopleList() {
                                 </div>
                             </td>
                             <td>
-                                {person.roles.map(role => <Badge key={role} color={getRoleColor(role)} text={role} />)}
+                                {person.roles.map((role: string) => <Badge key={role} color={getRoleColor(role)} text={role} />)}
                             </td>
                             <td>
                                 <div className="btn btn-primary btn-sm disabled">Pokaż profil</div>
