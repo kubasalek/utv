@@ -43,6 +43,10 @@ export function getFullStatuses() {
     return statuses;
 }
 
+export function getDefaultAvatar() {
+    return '/images/utv.png';
+}
+
 export function getStatusColor(status: string): string {
     return status in statuses ? statuses[status as StatusKey][1] : "primary";
 }

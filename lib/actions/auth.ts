@@ -16,9 +16,6 @@ export async function loginWithDirectDB(formData: FormData, redirect_url: string
   }
 
   try {
-    // 1. Pobranie użytkownika z bazy danych
-    // Funkcja sql z @neondatabase/serverless automatycznie chroni przed SQL Injection
-    // Zakładam, że Twoja tabela nazywa się 'users', a kolumny to 'login' i 'password_hash'
     const users = await sql`
       SELECT uuid, password_hash, first_name, last_name, avatar_url
       FROM users 

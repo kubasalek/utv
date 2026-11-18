@@ -53,7 +53,7 @@ export const sidebarMenuConfig: MenuItem[] = [
     type: 'link',
     title: 'Zespół UTV',
     icon: 'ti ti-users',
-    path: '/dashboard/team' 
+    path: '/dashboard/people' 
   },
   {
     id: 'link-profil',

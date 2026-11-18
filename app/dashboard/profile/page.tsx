@@ -8,18 +8,27 @@ import Row from '@/components/global/Row';
 import Col from '@/components/global/Col';
 import Sidebar from '@/components/global/Sidebar';
 import Header from '@/components/global/Header';
+import Badge from '@/components/global/Badge';
 
 import { Input } from '@/components/form/FormControls';
 
 import { getUserData } from '@/lib/session';
+import { getUserRoles } from '@/lib/actions/permissions';
+import { getRoleColor } from '@/lib/UTVconfig';
 import { Icon } from '@iconify/react';
 import { notFound } from 'next/navigation';
+import { sendMail } from '@/lib/mail'
+
+import BasicInfoForm from './components/BasicInfoForm';
+import ICEContact from './components/ICEContact';
 
 export default async function Home() {
 	const userData = await getUserData();
 	if (userData == undefined) {
 		notFound();
 	}
+
+	const userRoles = await getUserRoles();
 
   	return (
 		<>
@@ -43,27 +52,13 @@ export default async function Home() {
 								</div>
 							</ Col>
 						</ Row>
-						<Row>
-							<Col width={12} md={6}>
-								<Input label="Adres e-mail" type="email" />
-							</ Col>
-							<Col width={12} md={6}>
-								<Input label="Numer telefonu" type="phone" />
-							</ Col>
-						</ Row>
+						<BasicInfoForm initialEmail="example@example.com" initialPhone="+48 123 456 789" />
 					</ Card>
 				</ Col>
 
 				<Col width={12} lg={4}>
 					<Card title="Kontakt do bliskiej osoby" subtitle="Uzupełnij dane bliskiej osoby" width={12}>
-						<Row>
-							<Col width={12}>
-								<Input label="Numer telefonu" type="phone" />
-							</ Col>
-							<Col width={12}>
-								<Input label="Opis kontaktu" type="text" />
-							</ Col>
-						</ Row>
+						<ICEContact initialPhone="+48 123 456 789" initialLabel="John Smith" />
 					</ Card>
 				</ Col>
 			</ Row>
@@ -71,6 +66,7 @@ export default async function Home() {
 			<Row>
 				<Col width={12}>
 					<Card title="Twoje UTV" subtitle="Informacje na temat Twojego członkostwa w UTV" width={12}>
+						{userRoles.map(role => <Badge key={role} color={getRoleColor(role)} text={role} />)}
 					</ Card>
 				</ Col>
 			</ Row>
